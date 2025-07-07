@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation on images.">
+  <meta name="keywords" content="LoRA, Disentangled Fine-tuning, QR Decomposition">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation</title>
+
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-PYVRSFMDRL"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+
+    gtag('js', new Date());
+
+    gtag('config', 'G-PYVRSFMDRL');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="https://keunhong.com">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="https://ziplora.github.io/">
+            ZipLoRA
+          </a>
+          <a class="navbar-item" href="https://github.com/yardenfren1996/B-LoRA">
+            B-LoRA
+          </a>
+          <a class="navbar-item" href="https://github.com/cloneofsimo/lora">
+            DB-LoRA
+          </a>
+          <a class="navbar-item" href="https://dreambooth.github.io/">
+            DreamBooth
+          </a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title"><span
+            style="color: #e7951a; font-weight: bolder;">QR-LoRA</span>: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation</h1>
+          <div class="is-size-4 has-text-centered" style="margin-bottom: 1rem;">
+            <span style="color: #3273dc; font-weight: bold;">ICCV 2025</span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Jiahui Yang</a><sup>1,2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?hl=zh-CN&user=BszRJxkAAAAJ">Yongjia Ma</a><sup>2</sup>,</span>
+            <span class="author-block">
+              <a href="https://scholar.google.com/citations?user=L8tcNioAAAAJ&hl=zh-CN&oi=ao">Donglin Di</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Hao Li</a><sup>2</sup>,
+            </span>
+          </div>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="">Wei Chen</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Yan Xie</a><sup>2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Jianxun Cui*</a><sup>1</sup>
+            </span>
+            <span class="author-block"></span>
+              <a href="https://scholar.google.com/citations?user=ro8lzsUAAAAJ&hl=zh-CN&oi=ao">Xun Yang</a><sup>3</sup>
+            </span>
+            <span class="author-block"></span>
+              <a href="https://scholar.google.com/citations?user=rUOpCEYAAAAJ&hl=zh-CN&oi=ao">Wangmeng Zuo</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Harbin Institute of Technology.</span>
+            <span class="author-block"><sup>2</sup>Li Auto.</span>
+            <span class="author-block"><sup>3</sup>University of Science and Technology of China.</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span>
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+              
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Existing text-to-image models often rely on parameter fine-tuning techniques such as Low-Rank Adaptation (LoRA) to customize visual attributes. However, when combining multiple LoRA models for content-style fusion tasks, unstructured modifications of weight matrices often lead to undesired feature entanglement between content and style attributes.
+            We propose QR-LoRA, a novel fine-tuning framework leveraging QR decomposition for structured parameter updates that effectively separate visual attributes. Our key insight is that the orthogonal Q matrix naturally minimizes interference between different visual features, while the upper triangular R matrix efficiently encodes attribute-specific transformations.
+            Our approach fixes both Q and R matrices while only training an additional task-specific $\Delta R$ matrix. This structured design reduces trainable parameters to half of conventional LoRA methods and supports effective merging of multiple adaptations without cross-contamination due to the strong disentanglement properties between $\Delta R$ matrices.
+            Experiments demonstrate that QR-LoRA achieves superior disentanglement in content-style fusion tasks, establishing a new paradigm for parameter-efficient, disentangled fine-tuning in generative models.
+          </p>        
+        </div>
+        <img src="./static/images/qrlora-method1.png">
+        <div class="content has-text-justified">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section class="section"></section>
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Motivation and Analysis of QR-LoRA Methodology</h2>
+        <div class="content has-text-justified">
+          <p>
+            Through extensive matrix similarity analysis across different tasks, we observe that both Q and A matrices exhibit high similarity scores, while R matrices maintain relatively lower but still significant similarities (>0.75). This observation inspires us to leverage the stability of Q matrices as fixed orthogonal bases, while introducing a ∆R mechanism for precise feature control. This design enables superior feature disentanglement while maintaining model stability, as evidenced by consistently low similarity scores (&lt;0.2) between ∆R matrices across different tasks.
+        </p>        
+        </div>
+        <img src="./static/images/motivation.png">
+        <div class="content has-text-justified">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3"> Qualitative Comparisons of Content & Style Fusion-Gen Task</h2>
+        <div class="content has-text-justified">
+          <p>
+            Comparison of our QR-LoRA against state-of-the-art methods on SDXL and a naive baseline on SD3 and FLUX.1-dev models, 
+            demonstrating the model-agnostic nature and superior performance of our framework. Zoom in to view details.
+        </p>        
+        </div>
+        <img src="./static/images/comparison1.png">
+        <div class="content has-text-justified">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@article{park2021nerfies,
+  author    = {Park, Keunhong and Sinha, Utkarsh and Barron, Jonathan T. and Bouaziz, Sofien and Goldman, Dan B and Seitz, Steven M. and Martin-Brualla, Ricardo},
+  title     = {Nerfies: Deformable Neural Radiance Fields},
+  journal   = {ICCV},
+  year      = {2021},
+}</code></pre>
+  </div>
+</section> -->
+
+<!-- <hr> -->
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>This website is built using the source code from <a
+            href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>, and we sincerely appreciate their template.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
