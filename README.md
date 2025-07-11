@@ -1,5 +1,7 @@
 # 🚀 QR-LoRA 🚀
 
+**Accepted to ICCV 2025**
+
 **Official PyTorch implementation of QR-LoRA**
 
 [QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation](https://arxiv.org/abs/2507.04599)  
@@ -91,7 +93,7 @@ We also gratefully acknowledge the open-source libraries like [diffusers](https:
 @inproceedings{yang2025qrlora,
   title={QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation},
   author={Jiahui Yang and Yongjia Ma and Donglin Di and Hao Li and Wei Chen and Yan Xie and Jianxun Cui and Xun Yang and Wangmeng Zuo},
-  booktitle=International Conference on Computer Vision,
+  booktitle={Proceedings of the IEEE/CVF International Conference on Computer Vision (ICCV)},
   year={2025}
 }
 ```
