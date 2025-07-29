@@ -4,7 +4,7 @@
 
 **Official PyTorch implementation of QR-LoRA**
 
-[QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation](https://arxiv.org/abs/2507.04599)  
+[QR-LoRA: Efficient and Disentangled Fine-tuning via QR Decomposition for Customized Generation](https://arxiv.org/abs/2507.04599v2)  
 
 ##  🌼 Abstract
 We propose QR-LoRA, a novel fine-tuning framework leveraging QR decomposition for structured parameter updates that effectively separate visual attributes. Our key insight is that the orthogonal Q matrix naturally minimizes interference between different visual features, while the upper triangular R matrix efficiently encodes attribute-specific transformations. Our approach fixes both Q and R matrices while only training an additional task-specific ΔR matrix. This structured design reduces trainable parameters to half of conventional LoRA methods and supports effective merging of multiple adaptations without cross-contamination due to the strong disentanglement properties between ΔR matrices.
